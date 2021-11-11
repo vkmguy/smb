@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">ShoppingList</string>
+    <string name="show_bought_items">Show Bought Items</string>
+    <string name="sort_by_name">sort by name</string>
+    <string name="yes">yes</string>
+    <string name="no">no</string>
+    <string name="purchased">Purchased</string>
+    <string name="not_purchased">not Purchased</string>
+    <string name="sort_by_price">sort by price</string>
+    <string name="text_size">Text Size</string>
+    <string name="small">small</string>
+    <string name="medium">medium</string>
+    <string name="dark_mode">Dark Mode</string>
+    <string name="mode">Mode</string>
+    <string name="settings_page">SETTINGS PAGE</string>
+</resources>
