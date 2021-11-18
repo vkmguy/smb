@@ -1,11 +1,16 @@
 package com.pjait.shopping.ui.shoppingList
 
+import android.app.NotificationChannel
+import android.app.NotificationManager
 import android.app.UiModeManager.MODE_NIGHT_YES
+import android.content.*
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.service.autofill.Dataset
+import android.util.Log
 import android.widget.RadioButton
 import androidx.appcompat.app.AppCompatDelegate
+import androidx.core.app.NotificationManagerCompat
 import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.Preferences
 import androidx.lifecycle.Observer
@@ -18,8 +23,10 @@ import com.pjait.shopping.data.db.entity.ShoppingItem
 import com.pjait.shopping.databinding.ActivityShoppingBinding
 import kotlinx.coroutines.launch
 
+
 class ProductListActivity : AppCompatActivity() {
     lateinit var binding: ActivityShoppingBinding
+    lateinit var receiver: BroadcastReceiver
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityShoppingBinding.inflate(layoutInflater)
@@ -43,16 +50,25 @@ class ProductListActivity : AppCompatActivity() {
             })
 
         binding.rvShoppingItems.adapter = shoppingAdapter
-
         binding.fab.setOnClickListener{
             AddShoppingItemDialogue(this,
             object: AddDialogueListener{
                 override fun onAddButtonClicked(item: ShoppingItem) {
                     viewModel.insert(item)
+                    val i = Intent()
+                    Intent().also{
+                        it.component = ComponentName("com.pjait.shoppinglisteditor", "com.pjait.shoppinglisteditor.ShoppingListReceiver")
+                        it.putExtra("newItem",item.id)
+//                        it.action = "shopping.ac.ADD_ITEM"
+//                        it.addFlags(Intent.FLAG_INCLUDE_STOPPED_PACKAGES)
+                    }
+                    applicationContext.sendBroadcast(i)
+                    Log.d("test", "broadcast sent!")
                 }
             }).show()
+
         }
-
-
     }
+
+
 }
