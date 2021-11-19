@@ -2,7 +2,9 @@ package com.pjait.shoppinglisteditor
 
 import android.app.NotificationChannel
 import android.app.NotificationManager
+import android.content.ComponentName
 import android.content.Context
+import android.content.Intent
 import android.content.IntentFilter
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -18,14 +20,16 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
+        shoppingListReceiver = ShoppingListReceiver()
         setContentView(binding.root)
-        createChannel(this)
+        binding.tvProductName.text  = intent.getStringExtra("newItem").toString()
+        createChannel(this, channelId, channelName)
     }
 
     override fun onStart() {
         super.onStart()
         shoppingListReceiver = ShoppingListReceiver()
-        val intentFilter = IntentFilter("shopping.ac.ADD_ITEM")
+        val intentFilter = IntentFilter()
         registerReceiver(shoppingListReceiver, intentFilter)
         Log.d("receiver", "started")
     }
@@ -36,8 +40,8 @@ class MainActivity : AppCompatActivity() {
         Log.d("receiver", "stopped")
     }
 
-    private fun createChannel(context: Context){
-        val channel =  NotificationChannel(channelId, channelName, NotificationManager.IMPORTANCE_DEFAULT)
+    private fun createChannel(context: Context, id: String, name: String){
+        val channel =  NotificationChannel(id, name, NotificationManager.IMPORTANCE_DEFAULT)
 //        (getSystemService(NOTIFICATION_SERVICE) as NotificationManager)
 //            .createNotificationChannel(channel)
         NotificationManagerCompat.from(context)

@@ -2,10 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.pjait.shopping">
 
-    <permission
-        android:name="shopping.sp.ADD_ITEM_PERM"
-        android:label="add_item_perm"
-        android:protectionLevel="signature" />
+    <uses-permission android:name="com.pjait.shoppinglisteditor.broadcast_permission"/>
 
     <application
         android:allowBackup="true"

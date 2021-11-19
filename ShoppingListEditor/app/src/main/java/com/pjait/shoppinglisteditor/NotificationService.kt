@@ -3,12 +3,13 @@ package com.pjait.shoppinglisteditor
 import android.app.*
 import android.content.Context
 import android.content.Intent
+import android.content.pm.ApplicationInfo
 import android.os.IBinder
 import android.util.Log
 import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
 
-class MyService : Service() {
+class NotificationService : Service() {
     private val channelId = "channel1"
     override fun onBind(intent: Intent): IBinder {
         TODO("Return the communication channel to the service.")
@@ -16,14 +17,17 @@ class MyService : Service() {
 
     override fun onStartCommand(intent: Intent, flags: Int, startId: Int): Int {
         val input = intent.getStringExtra("newItem")
-        val notificationIntent = Intent(this, MainActivity::class.java)
+//        val launchIntent = packageManager.getLaunchIntentForPackage("com.pjait.shopping.ui.shoppingList")
+        val notificationIntent = Intent(this, MainActivity::class.java).also {
+            it.putExtra("newItem", input)
+        }
         val pendingIntent = PendingIntent.getActivity(
             this,
             0, notificationIntent, PendingIntent.FLAG_ONE_SHOT
         )
         val notification: Notification = NotificationCompat.Builder(this, channelId)
-            .setContentTitle("New Item Added")
-            .setContentText("Item Code $input")
+            .setContentTitle("New Item Added !!")
+            .setContentText("Item Name: $input")
             .setSmallIcon(R.drawable.ic_launcher_background)
             .setContentIntent(pendingIntent)
             .setAutoCancel(true)

@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">ShoppingListEditor</string>
+    <string name="a_new_product_has_been_added">A new Product Has been Added !</string>
+    <string name="product_name">Product Name</string>
 </resources>

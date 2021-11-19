@@ -55,14 +55,13 @@ class ProductListActivity : AppCompatActivity() {
             object: AddDialogueListener{
                 override fun onAddButtonClicked(item: ShoppingItem) {
                     viewModel.insert(item)
-                    val i = Intent()
-                    Intent().also{
+                    val i = Intent("com.pjait.shopping.ui.shoppingList.ADD_ITEM")
+                        .also{
                         it.component = ComponentName("com.pjait.shoppinglisteditor", "com.pjait.shoppinglisteditor.ShoppingListReceiver")
-                        it.putExtra("newItem",item.id)
-//                        it.action = "shopping.ac.ADD_ITEM"
-//                        it.addFlags(Intent.FLAG_INCLUDE_STOPPED_PACKAGES)
+                        it.putExtra("newItem",item.name)
+                        it.addFlags(Intent.FLAG_INCLUDE_STOPPED_PACKAGES)
                     }
-                    applicationContext.sendBroadcast(i)
+                    sendBroadcast(i)
                     Log.d("test", "broadcast sent!")
                 }
             }).show()
