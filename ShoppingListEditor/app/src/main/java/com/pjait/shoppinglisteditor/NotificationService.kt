@@ -1,6 +1,7 @@
 package com.pjait.shoppinglisteditor
 
 import android.app.*
+import android.content.ComponentName
 import android.content.Context
 import android.content.Intent
 import android.content.pm.ApplicationInfo
@@ -18,7 +19,8 @@ class NotificationService : Service() {
     override fun onStartCommand(intent: Intent, flags: Int, startId: Int): Int {
         val input = intent.getStringExtra("newItem")
 //        val launchIntent = packageManager.getLaunchIntentForPackage("com.pjait.shopping.ui.shoppingList")
-        val notificationIntent = Intent(this, MainActivity::class.java).also {
+        val notificationIntent = Intent().also {
+            it.component = ComponentName("com.pjait.shopping.ui.shoppingList", "ProductListActivity")
             it.putExtra("newItem", input)
         }
         val pendingIntent = PendingIntent.getActivity(

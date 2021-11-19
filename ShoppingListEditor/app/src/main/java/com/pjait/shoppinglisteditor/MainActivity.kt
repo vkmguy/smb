@@ -23,6 +23,7 @@ class MainActivity : AppCompatActivity() {
         shoppingListReceiver = ShoppingListReceiver()
         setContentView(binding.root)
         binding.tvProductName.text  = intent.getStringExtra("newItem").toString()
+        binding.tvProductList.text = intent.getStringArrayListExtra("productList").toString()
         createChannel(this, channelId, channelName)
     }
 

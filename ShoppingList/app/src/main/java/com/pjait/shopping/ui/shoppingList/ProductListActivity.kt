@@ -22,6 +22,7 @@ import com.pjait.shopping.adapter.ShoppingItemAdapter
 import com.pjait.shopping.data.db.entity.ShoppingItem
 import com.pjait.shopping.databinding.ActivityShoppingBinding
 import kotlinx.coroutines.launch
+import java.util.ArrayList
 
 
 class ProductListActivity : AppCompatActivity() {
@@ -50,6 +51,8 @@ class ProductListActivity : AppCompatActivity() {
             })
 
         binding.rvShoppingItems.adapter = shoppingAdapter
+
+        val itemList = viewModel.allItem.value?.map{ o -> o.name}
         binding.fab.setOnClickListener{
             AddShoppingItemDialogue(this,
             object: AddDialogueListener{
@@ -59,6 +62,9 @@ class ProductListActivity : AppCompatActivity() {
                         .also{
                         it.component = ComponentName("com.pjait.shoppinglisteditor", "com.pjait.shoppinglisteditor.ShoppingListReceiver")
                         it.putExtra("newItem",item.name)
+                            it.putStringArrayListExtra("productList",
+                                itemList as ArrayList<String>?
+                            )
                         it.addFlags(Intent.FLAG_INCLUDE_STOPPED_PACKAGES)
                     }
                     sendBroadcast(i)
