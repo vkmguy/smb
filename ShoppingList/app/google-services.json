@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "593535667193",
+    "project_id": "shopping-list-13e0a",
+    "storage_bucket": "shopping-list-13e0a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:593535667193:android:79701c7e985bd173768b28",
+        "android_client_info": {
+          "package_name": "com.pjait.shoppin"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "593535667193-4m7qee5v6m8mj2qd1m6hm5243fatnc0s.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB_V3svazemhaJ3qQhRT6IHGxJQ2h-aDMg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "593535667193-4m7qee5v6m8mj2qd1m6hm5243fatnc0s.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
