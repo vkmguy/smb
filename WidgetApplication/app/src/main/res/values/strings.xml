@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">WidgetApplication</string>
+    <string name="appwidget_text">EXAMPLE</string>
+    <string name="add_widget">Add widget</string>
+    <string name="app_widget_description">This is an app widget description</string>
+    <string name="pjwstkWebsite">https://www.pja.edu.pl</string>
+    <string name="open_pjait_website">Open PJAIT Website</string>
+    <string name="random_image">Random image</string>
+    <string name="randomImageButton">RandomImage</string>
+    <string name="actionImage">com.example.widgetpplication.actionImage</string>
+    <string name="actionPlayMusic">com.example.widgetpplication.actionPlayMusic</string>
+    <string name="actionPauseMusic">com.example.widgetpplication.actionPauseMusic</string>
+    <string name="actionNextMusic">com.example.widgetpplication.actionNextMusic</string>
+    <string name="actionStopMusic">com.example.widgetpplication.actionStopMusic</string>
+    <string name="actionOpenNearestLocation">com.example.widgetpplication.actionOpenNearestLocation</string>
+</resources>
